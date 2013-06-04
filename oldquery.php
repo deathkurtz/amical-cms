@@ -2,45 +2,57 @@
 //$result = mysql_query("UPDATE pages SET text_page = '$sql' WHERE id_page='$id'");
 require_once('queryDB.php');
 
-        $connectDB = new QueryDB;
-        
-        $table = "pages";
         $action = $_POST['action'];
-        $id = 15;
-//        $id = $_POST['id'];
+        $id = $_POST['id'];
         $title = $_POST['title'];
         $keyw = $_POST['keyw'];
-        $desc_page = $_POST['desc'];
-        $text_page = $_POST['text'];
-        $where = "id_page =".$id;            
-        $object = array();
+        $desc = $_POST['desc'];
+        $text = $_POST['text'];
+         
+      
+class PageAction extends QueryDB
+{   
+    protected $where = "id_page="; 
+    protected $table = "pages";
+    protected $object = array();    
+            
+    function NewPage($title,$keyw,$desc,$text)
+    {
+        $this->object = array('id_page'=>"NULL",
+                            'title_page'=> $title,
+                            'keyw_page'=> $keyw,
+                            'desc_page'=> $desc,
+                            'text_page'=> $text);            
 
-//    if($action=="insert")
-//    {
+        QueryDB::Insert($this->table,$this->object);
+    }
     
-//        $object["id_page"]= "NULL";
-//        $object["title_page"]= $title;
-//        $object["keyw_page"]= $keyw;
-//        $object["desc_page"]= $desc;
-//        $object["text_page"]= $text;            
-//        
-//        $connectDB->Insert($table,$object);
-//    }
-    //
-//    if($action=='update')
-//    {
-//        $object["id_page"]= $id;
-//        $object["title_page"]= $title;
-//        $object["keyw_page"]= $keyw;
-//        $object["desc_page"]= $desc;
-//        $object["text_page"]= $text;            
-//        
-//        $connectDB->Update($table,$object,$where);
-//    }
-//
-//    if($action=='delete')
-//    {    
-        $connectDB->Delete($table,$where);
-//    }
-//
+    function UpdatePage($id,$title,$keyw,$desc,$text)
+    {
+        $this->where = $this->where.$id;
+        $this->object = array('id_page'=>$id,
+                            'title_page'=> $title,
+                            'keyw_page'=> $keyw,
+                            'desc_page'=> $desc,
+                            'text_page'=> $text);            
+        
+        QueryDB::Update($this->table,$this->object,$this->where);
+    }
+
+    function DeletePage($id)
+    {   
+        $this->where = $this->where.$id;
+        QueryDB::Delete($this->table,$this->where);
+    }
+}
+
+$queryPage = new PageAction;
+
+switch($action)
+{
+ case 'NewPage': $queryPage->NewPage($title,$keyw,$desc,$text);
+ case 'UpdatePage': $queryPage->UpdatePage($id,$title,$keyw,$desc,$text);
+ case 'DeletePage': $queryPage->DeletePage($id);   
+}
+
 ?>
