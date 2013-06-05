@@ -14,6 +14,19 @@ class PageAction extends QueryDB
     protected $where = "id_page="; 
     protected $table = "pages";
     protected $object = array();    
+    
+    
+    function ListPage()
+    {
+        
+        return QueryDB::Select("SELECT * FROM pages");
+    }
+    
+    function ViewPage($id)
+    {
+        
+        return QueryDB::Select("SELECT * FROM pages WHERE id_page = $id");
+    }
             
     function NewPage($title,$keyw,$desc,$text)
     {
