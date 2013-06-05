@@ -1,9 +1,9 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 3.5.1
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 04 2013 г., 16:47
+-- Время создания: Июн 05 2013 г., 14:23
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -30,17 +30,18 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `id_menu` int(11) NOT NULL AUTO_INCREMENT,
   `name_menu` varchar(15) DEFAULT NULL,
   `activ_menu` tinyint(1) DEFAULT NULL,
-  `id_page` smallint(6) DEFAULT NULL,
+  `link_menu` varchar(50) NOT NULL,
   PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `menu`
 --
 
-INSERT INTO `menu` (`id_menu`, `name_menu`, `activ_menu`, `id_page`) VALUES
-(1, 'Home', 1, 1),
-(2, 'About', 1, 2);
+INSERT INTO `menu` (`id_menu`, `name_menu`, `activ_menu`, `link_menu`) VALUES
+(1, 'Home', 1, '?action=page&id=1'),
+(2, 'About', 1, '?action=page&id=2'),
+(3, 'News', 0, '?action=newsall&limit=5');
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `desc_page` varchar(255) DEFAULT NULL,
   `text_page` mediumtext,
   PRIMARY KEY (`id_page`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Дамп данных таблицы `pages`
