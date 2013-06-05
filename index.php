@@ -1,31 +1,35 @@
 ﻿<?php
 
-    require_once('queryDB.php');
+require_once('queryDB.php');
 
-$connect = new QueryDB;
-
-$sql = "SELECT * FROM menu";
-
-$query = $connect->Select($sql);
-
-    if(empty($_GET['page']))
-
-$page=1;
-
+        $sql = new Content;
+                
+        $action = $_GET['action'];
+        
+        $news = $sql->NewsLoadAll(3);
+                
+        $menu = $sql->MenuLoad();
+       
+       
+    if(empty($_GET['id']))
+            
+        $id=1;
+            
     else
+            
+        $id = $_GET['id'];
+        
 
-$page = $_GET['page'];
- 
-$page = "SELECT * FROM pages WHERE id_page = ".$page;
-
-$pageload = $connect->Select($page);
-
-$news = $connect->Select("SELECT * FROM news ORDER BY date_news DESC LIMIT 3");
-
-    foreach ($pageload as $page):
-
-include_once('theme\default\index.php');
-
-    endforeach
-  
+    switch($action)
+    {
+        case "news":
+        foreach ($sql->NewsLoad($id) as $Tcontent):$content = array('text' => $Tcontent['text_news']);
+            include_once('theme\default\index.php');
+        endforeach;
+            break;
+        default:
+        foreach ($sql->PageLoad($id) as $Tcontent):$content = array('text' => $Tcontent['text_page']);
+            include_once('theme\default\index.php');
+        endforeach;
+    }    
 ?>

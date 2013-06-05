@@ -1,5 +1,4 @@
 ﻿<?php
-//$result = mysql_query("UPDATE pages SET text_page = '$sql' WHERE id_page='$id'");
 require_once('queryDB.php');
 
         $action = $_POST['action'];

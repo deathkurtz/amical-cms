@@ -134,3 +134,28 @@
         
     
 }
+
+    class Content extends QueryDB
+{
+        
+        function PageLoad($id)
+        {   
+            return QueryDB::Select("SELECT * FROM pages WHERE id_page=$id");    
+        }
+    
+        function NewsLoad($id)
+        {
+            return QueryDB::Select("SELECT * FROM news WHERE id_news=$id");
+        }
+    
+        function NewsLoadAll($limit)
+        {
+            return QueryDB::Select("SELECT * FROM news ORDER BY date_news DESC LIMIT $limit");
+        }
+
+        function MenuLoad()
+        {
+            return QueryDB::Select("SELECT * FROM menu WHERE activ_menu = 1");
+        }
+
+}

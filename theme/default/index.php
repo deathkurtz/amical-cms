@@ -15,15 +15,15 @@
     <h2><a href="http://www.freecsstemplates.org/">By Free CSS Templates</a></h2>
   </div>
   <div id="menu">
-    <ul><?foreach ($query as $menu):?>
-	  <li><a href=?page=<?=$menu['id_page']?>><?=$menu['name_menu']?></a></li>
+    <ul><?foreach ($menu as $menu):?>
+	  <li><a href=<?=$menu['link_menu']?>><?=$menu['name_menu']?></a></li>
 	  <?endforeach?>
 </ul>
   </div>
 </div>
 <div id="page">
   <div id="content">
-      <?=$page['text_page']?>
+      <?=$content['text']?>
   </div>
   <!-- end content -->
   <div id="sidebar">
@@ -46,7 +46,7 @@
         <?foreach($news as $s_news):?>
           <li class="first">
             <h3><?=$s_news['date_news']?></h3>
-            <p><a href="?news=<?=$s_news['id_news']?>"><?=$s_news['title_news']?>&hellip;</a></p>
+            <p><a href="?action=news&id=<?=$s_news['id_news']?>"><?=$s_news['title_news']?>&hellip;</a></p>
           </li>
         <?endforeach?>
         </ul>
