@@ -5,7 +5,7 @@
 
 </head>
 <body>
-<form action="oldquery.php" method="POST">
+<form action="pageQuery.php" method="POST">
         <input type="hidden" name="action" value="NewPage"></input>
         Добавить в меню <input type="checkbox" name="AddToMenu"></input><br />
         Заголовок: <input type="text" name="title" height="45"></input><br />

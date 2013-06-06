@@ -1,6 +1,6 @@
 <?
  
-require_once('oldquery.php');
+require_once('pageQuery.php');
 
 $loadPage = new PageAction;
 

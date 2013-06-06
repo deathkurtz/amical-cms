@@ -1,6 +1,6 @@
 <?php
 
-require_once('oldquery.php');
+require_once('pageQuery.php');
 
 $listPage = new PageAction;
 

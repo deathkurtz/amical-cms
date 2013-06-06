@@ -71,6 +71,11 @@ $queryPage = new PageAction;
     }
         else 
     {
-        echo '<script>location.replace("test.php?activ=1&name='.$title.'&id='.$queryPage->NewPage($title,$keyw,$desc,$text).'");</script>';
+        
+        require_once('menuQuery.php');
+            $addMenu = new MenuAction;
+            $addMenu->AddMenu($title, 1, '?action=page&id='.$queryPage->NewPage($title,$keyw,$desc,$text));
+        header('Location: pageAdd.php');
+   
     }
 ?>

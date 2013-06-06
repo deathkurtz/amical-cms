@@ -4,8 +4,14 @@ require_once('queryDB.php');
 class MenuAction extends QueryDB
 {        
         protected $table = 'menu';
+        
+    function ListPage()
+    {
+        
+        return QueryDB::Select('SELECT * FROM menu');
+    }
 
-function AddMenu($name,$activ,$link)
+    function AddMenu($name,$activ,$link)
     {
         $this->object = array('id_menu'=>"NULL",
                             'name_menu'=> $name,
@@ -16,14 +22,15 @@ function AddMenu($name,$activ,$link)
         
     }
 }
-if (empty($_GET['activ']))
-    $activ = 0;
-else
-    $activ = 1;
 
-$action = new MenuAction;
-
-$action = $action->AddMenu($_GET['name'],$activ,'?action=page&id='.$_GET['id']);
-
-echo' <script>location.replace("pageAdd.php");</script> ';
-?>
+//    if (empty($_GET['activ']))
+//        $activ = 0;
+//    else
+//        $activ = 1;
+//
+//$action = new MenuAction;
+//
+//$action = $action->AddMenu($_GET['name'],$activ,'?action=page&id='.$_GET['id']);
+//
+//header('Location: pageAdd.php');
+//?>
