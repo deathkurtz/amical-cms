@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once('queryDB.php');
 
         $action = $_POST['action'];
@@ -6,26 +6,25 @@ require_once('queryDB.php');
         $title = $_POST['title'];
         $keyw = $_POST['keyw'];
         $desc = $_POST['desc'];
-        $text = $_POST['text'];
-         
+        $text = $_POST['text']; 
       
 class PageAction extends QueryDB
 {   
-    protected $where = "id_page="; 
-    protected $table = "pages";
+    protected $where = 'id_page='; 
+    protected $table = 'pages';
     protected $object = array();    
     
     
     function ListPage()
     {
         
-        return QueryDB::Select("SELECT * FROM pages");
+        return QueryDB::Select('SELECT * FROM pages');
     }
     
     function ViewPage($id)
     {
         
-        return QueryDB::Select("SELECT * FROM pages WHERE id_page = $id");
+        return QueryDB::Select('SELECT * FROM pages WHERE id_page ='.$id);
     }
             
     function NewPage($title,$keyw,$desc,$text)
@@ -36,7 +35,8 @@ class PageAction extends QueryDB
                             'desc_page'=> $desc,
                             'text_page'=> $text);            
 
-        QueryDB::Insert($this->table,$this->object);
+        return QueryDB::Insert($this->table,$this->object);
+        
     }
     
     function UpdatePage($id,$title,$keyw,$desc,$text)
@@ -60,11 +60,17 @@ class PageAction extends QueryDB
 
 $queryPage = new PageAction;
 
-switch($action)
-{
- case 'NewPage': $queryPage->NewPage($title,$keyw,$desc,$text);
- case 'UpdatePage': $queryPage->UpdatePage($id,$title,$keyw,$desc,$text);
- case 'DeletePage': $queryPage->DeletePage($id);   
-}
-
+    if(empty($_POST['AddToMenu']))
+    {
+        switch($action)
+        {
+         case 'NewPage': $queryPage->NewPage($title,$keyw,$desc,$text);
+         case 'UpdatePage': $queryPage->UpdatePage($id,$title,$keyw,$desc,$text);
+         case 'DeletePage': $queryPage->DeletePage($id);   
+        }
+    }
+        else 
+    {
+        echo '<script>location.replace("test.php?activ=1&name='.$title.'&id='.$queryPage->NewPage($title,$keyw,$desc,$text).'");</script>';
+    }
 ?>

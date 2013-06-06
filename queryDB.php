@@ -1,22 +1,22 @@
-﻿<?php
+<?php
 
     abstract class DB
 {
         //
         // Настройки подключения к БД
         //
-        private $host = "localhost";
-        private $dbname = "cms";
-        private $dbuser = "root";
-        private $password = "";
+        private $host = 'localhost';
+        private $dbname = 'cms';
+        private $dbuser = 'root';
+        private $password = '';
 
         //
         // Подключение к БД
         //
         function __construct()
         {
-            mysql_connect($this->host,$this->dbuser,$this->password) or die ("Нет связи с сервером");
-            mysql_selectdb($this->dbname) or die ("Нет связи с БД");
+            mysql_connect($this->host,$this->dbuser,$this->password) or die ('Нет связи с сервером');
+            mysql_selectdb($this->dbname) or die ('Нет связи с БД');
         }
 
 
@@ -140,22 +140,22 @@
         
         function PageLoad($id)
         {   
-            return QueryDB::Select("SELECT * FROM pages WHERE id_page=$id");    
+            return QueryDB::Select('SELECT * FROM pages WHERE id_page='.$id);    
         }
     
         function NewsLoad($id)
         {
-            return QueryDB::Select("SELECT * FROM news WHERE id_news=$id");
+            return QueryDB::Select('SELECT * FROM news WHERE id_news='.$id);
         }
     
         function NewsLoadAll($limit)
         {
-            return QueryDB::Select("SELECT * FROM news ORDER BY date_news DESC LIMIT $limit");
+            return QueryDB::Select('SELECT * FROM news ORDER BY date_news DESC LIMIT '.$limit);
         }
 
         function MenuLoad()
         {
-            return QueryDB::Select("SELECT * FROM menu WHERE activ_menu = 1");
+            return QueryDB::Select('SELECT * FROM menu WHERE activ_menu = 1');
         }
 
 }
