@@ -5,7 +5,7 @@ class MenuAction extends QueryDB
 {        
         protected $table = 'menu';
         
-    function ListPage()
+    function ListMenu()
     {
         
         return QueryDB::Select('SELECT * FROM menu');
@@ -23,14 +23,4 @@ class MenuAction extends QueryDB
     }
 }
 
-//    if (empty($_GET['activ']))
-//        $activ = 0;
-//    else
-//        $activ = 1;
-//
-//$action = new MenuAction;
-//
-//$action = $action->AddMenu($_GET['name'],$activ,'?action=page&id='.$_GET['id']);
-//
-//header('Location: pageAdd.php');
-//?>
+?>
