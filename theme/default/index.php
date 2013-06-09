@@ -3,9 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title><?=$page['title_page']?></title>
-<meta name="keywords" content="<?=$page['keyw_page']?>" />
-<meta name="description" content="<?=$page['desc_page']?>" />
+<title><?=$content['title']?></title>
+<meta name="keywords" content="<?=$content['keyw']?>" />
+<meta name="description" content="<?=$content['desc']?>" />
 <link href="theme/default/default.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -16,7 +16,7 @@
   </div>
   <div id="menu">
     <ul><?foreach ($menu as $menu):?>
-	  <li><a href=<?=$menu['link_menu']?>><?=$menu['name_menu']?></a></li>
+	  <li><a href=?action=<?=$menu['action_menu']?>&id=<?=$menu['argument_menu']?>><?=$menu['name_menu']?></a></li>
 	  <?endforeach?>
 </ul>
   </div>

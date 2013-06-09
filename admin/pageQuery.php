@@ -1,5 +1,5 @@
 <?php
-require_once('queryDB.php');
+require_once('..\dbQuery.php');
 
         $action = $_POST['action'];
         $id = $_POST['id'];
@@ -74,7 +74,7 @@ $queryPage = new PageAction;
         
         require_once('menuQuery.php');
             $addMenu = new MenuAction;
-            $addMenu->AddMenu($title, 1, '?action=page&id='.$queryPage->NewPage($title,$keyw,$desc,$text));
+            $addMenu->AddMenu($title, 1, 'page', $queryPage->NewPage($title,$keyw,$desc,$text));
         header('Location: pageAdd.php');
    
     }

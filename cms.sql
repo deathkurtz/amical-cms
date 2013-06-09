@@ -1,9 +1,9 @@
-﻿-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 3.5.1
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 05 2013 г., 14:23
+-- Время создания: Июн 08 2013 г., 19:21
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `activ_menu` tinyint(1) DEFAULT NULL,
   `link_menu` varchar(50) NOT NULL,
   PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Дамп данных таблицы `menu`
@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS `menu` (
 INSERT INTO `menu` (`id_menu`, `name_menu`, `activ_menu`, `link_menu`) VALUES
 (1, 'Home', 1, '?action=page&id=1'),
 (2, 'About', 1, '?action=page&id=2'),
-(3, 'News', 0, '?action=newsall&limit=5');
+(3, 'News', 0, '?action=newsall&limit=5'),
+(5, 'Proverka', 1, '?action=page&id=22');
 
 -- --------------------------------------------------------
 
@@ -52,6 +53,8 @@ INSERT INTO `menu` (`id_menu`, `name_menu`, `activ_menu`, `link_menu`) VALUES
 CREATE TABLE IF NOT EXISTS `news` (
   `id_news` int(11) NOT NULL AUTO_INCREMENT,
   `title_news` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `keyw_news` varchar(255) NOT NULL,
+  `desc_news` varchar(255) NOT NULL,
   `text_news` text,
   `date_news` datetime DEFAULT NULL,
   PRIMARY KEY (`id_news`)
@@ -61,9 +64,9 @@ CREATE TABLE IF NOT EXISTS `news` (
 -- Дамп данных таблицы `news`
 --
 
-INSERT INTO `news` (`id_news`, `title_news`, `text_news`, `date_news`) VALUES
-(1, 'Запуск Сайта', 'Мы рады видеть вас на нашем сайте...', '2013-06-04 09:04:09'),
-(2, 'Развитие CMS', 'Ура товарищи наша CMS очень быстро...', '2013-06-05 10:07:43');
+INSERT INTO `news` (`id_news`, `title_news`, `keyw_news`, `desc_news`, `text_news`, `date_news`) VALUES
+(1, 'Запуск Сайта', 'Запуск Сайта', 'Запуск Сайта', 'Мы рады видеть вас на нашем сайте...', '2013-06-04 09:04:09'),
+(2, 'Развитие CMS', 'Развитие CMS', 'Развитие CMS', 'Ура товарищи наша CMS очень быстро...', '2013-06-05 10:07:43');
 
 -- --------------------------------------------------------
 
@@ -78,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `desc_page` varchar(255) DEFAULT NULL,
   `text_page` mediumtext,
   PRIMARY KEY (`id_page`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
 -- Дамп данных таблицы `pages`
@@ -89,7 +92,7 @@ INSERT INTO `pages` (`id_page`, `title_page`, `keyw_page`, `desc_page`, `text_pa
 (2, 'Title page', 'Key', 'Description', '<h2>Привет</h2><p>Я тебя убью скотина:</p><ol><li>Тебя</li><li>Твою семью</li><li>Себя</li></ol><br>'),
 (5, 'Заголовок', 'Ключ', 'Дескрипт', 'Привет<br>'),
 (13, 'New Page', 'New', 'News', '<div align="center"><font size="5">Привет, это новая <a target="" title="" href="http://test1.ru">страница</a></font><br></div>'),
-(14, 'Zag', 'Key', 'Desc', 'Hello!!!<br>');
+(22, 'Proverka', 'raz', 'dva', 'Trololo<br>');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
