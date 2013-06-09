@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 08 2013 г., 19:21
+-- Время создания: Июн 09 2013 г., 16:23
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -30,19 +30,19 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `id_menu` int(11) NOT NULL AUTO_INCREMENT,
   `name_menu` varchar(15) DEFAULT NULL,
   `activ_menu` tinyint(1) DEFAULT NULL,
-  `link_menu` varchar(50) NOT NULL,
+  `action_menu` varchar(10) NOT NULL,
+  `argument_menu` smallint(6) NOT NULL,
   PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `menu`
 --
 
-INSERT INTO `menu` (`id_menu`, `name_menu`, `activ_menu`, `link_menu`) VALUES
-(1, 'Home', 1, '?action=page&id=1'),
-(2, 'About', 1, '?action=page&id=2'),
-(3, 'News', 0, '?action=newsall&limit=5'),
-(5, 'Proverka', 1, '?action=page&id=22');
+INSERT INTO `menu` (`id_menu`, `name_menu`, `activ_menu`, `action_menu`, `argument_menu`) VALUES
+(1, 'Home', 1, 'page', 1),
+(3, 'News', 0, 'newsall', 5),
+(7, 'qwer', 1, 'page', 24);
 
 -- --------------------------------------------------------
 
@@ -81,18 +81,16 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `desc_page` varchar(255) DEFAULT NULL,
   `text_page` mediumtext,
   PRIMARY KEY (`id_page`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Дамп данных таблицы `pages`
 --
 
 INSERT INTO `pages` (`id_page`, `title_page`, `keyw_page`, `desc_page`, `text_page`) VALUES
-(1, 'Home', 'Our Website!', 'In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat', '<div style="margin-bottom: 20px;">\r\n<h1 class="title">Welcome to Our Website!</h1>\r\n      <p><strong>Center Stage</strong> is a free template from <a href="http://www.freecsstemplates.org/">Free CSS Templates</a> released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5 License</a>. You"re free to use it for both commercial or personal use. I only ask that you link back to <a href="http://www.freecsstemplates.org/">my site</a> in some way. <em>Enjoy :)</em></p>\r\n      <h2>Praesent Scelerisque</h2>\r\n      <p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat:</p>\r\n      <blockquote>\r\n        <p>“Integer nisl risus, sagittis convallis, rutrum id, elementum congue, nibh. Suspendisse dictum porta lectus. Donec placerat odio vel elit. Nullam ante orci, pellentesque eget.”</p>\r\n      </blockquote>\r\n    </div>\r\n    <div>&nbsp;</div>\r\n    <div class="twocols">\r\n      <div class="col1">\r\n        <h3 class="title">Lorem Ipsum Dolor</h3>\r\n        <p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. Quisque dictum integer nisl risus, sagittis convallis, rutrum id, congue, and nibh.</p>\r\n        <p><a href="http://web-mastery.info/">Read more…</a></p>\r\n      </div>\r\n      <div class="col2">\r\n        <h3 class="title">Pellentesque Quis</h3>\r\n        <ul class="list">\r\n          <li><a href="http://web-mastery.info/">Ut semper vestibulum est</a></li>\r\n          <li><a href="http://web-mastery.info/">Vestibulum luctus dui</a></li>\r\n          <li><a href="http://web-mastery.info/">Integer rutrum nisl in mi</a></li>\r\n          <li><a href="http://web-mastery.info/">Etiam malesuada rutrum</a></li>\r\n          <li><a href="http://web-mastery.info/">Aenean facilisis ligula</a></li>\r\n          <li><a href="http://web-mastery.info/">Vestibulum luctus dui</a></li>\r\n          <li><a href="http://web-mastery.info/">Ut elit vitae augue</a></li>\r\n          <li><a href="http://web-mastery.info/">Sed sagittis leo vehicula</a></li>\r\n          <li><a href="http://web-mastery.info/">Ut elit vitae augue</a></li>\r\n        </ul>\r\n</div>\r\n</div>'),
-(2, 'Title page', 'Key', 'Description', '<h2>Привет</h2><p>Я тебя убью скотина:</p><ol><li>Тебя</li><li>Твою семью</li><li>Себя</li></ol><br>'),
 (5, 'Заголовок', 'Ключ', 'Дескрипт', 'Привет<br>'),
 (13, 'New Page', 'New', 'News', '<div align="center"><font size="5">Привет, это новая <a target="" title="" href="http://test1.ru">страница</a></font><br></div>'),
-(22, 'Proverka', 'raz', 'dva', 'Trololo<br>');
+(24, 'qwer', 'qewr', 'req', 'qewr');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
