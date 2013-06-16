@@ -8,14 +8,14 @@ $loadPage = $loadPage->ViewPage($_GET['id']);
 
 foreach($loadPage as $page):
 ?>
-<html>
+<!DOCTYPE html>
 <head>
-<script src="js/nicEdit.js" type="text/javascript"></script>
+<script src="../js/nicEdit.js" type="text/javascript"></script>
 <script type="text/javascript">bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });</script>
 
 </head>
 <body>
-<form action="oldquery.php" method="POST">
+<form action="pageQuery.php" method="POST">
         <input type="hidden" name="action" value="UpdatePage"></input>
         <input type="hidden" name="id" value="<?=$_GET['id'];?>"></input>
         Заголовок: <input type="text" name="title" height="45" value="<?=$page['title_page'];?>"></input><br />

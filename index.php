@@ -1,4 +1,8 @@
 <?php
+    function test()
+    {
+        return 'OK';
+    }
 
 require_once('dbQuery.php');
 
@@ -13,7 +17,7 @@ require_once('dbQuery.php');
        
     if(empty($_GET['id']))
             
-        $id=1;
+        $id=5;
             
     else
             

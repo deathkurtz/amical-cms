@@ -23,7 +23,7 @@
 </div>
 <div id="page">
   <div id="content">
-      <?=$content['text']?>
+      <?=eval($content['text']);?>
   </div>
   <!-- end content -->
   <div id="sidebar">

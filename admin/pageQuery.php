@@ -27,13 +27,13 @@ class PageAction extends QueryDB
         return QueryDB::Select('SELECT * FROM pages WHERE id_page ='.$id);
     }
             
-    function NewPage($title,$keyw,$desc,$text)
+    function AddPage($title,$keyw,$desc,$text)
     {
         $this->object = array('id_page'=>"NULL",
                             'title_page'=> $title,
                             'keyw_page'=> $keyw,
                             'desc_page'=> $desc,
-                            'text_page'=> $text);            
+                            'text_page'=> '?>'.$text);            
 
         return QueryDB::Insert($this->table,$this->object);
         
@@ -64,7 +64,7 @@ $queryPage = new PageAction;
     {
         switch($action)
         {
-         case 'NewPage': $queryPage->NewPage($title,$keyw,$desc,$text);
+         case 'AddPage': $queryPage->AddPage($title,$keyw,$desc,$text);
          case 'UpdatePage': $queryPage->UpdatePage($id,$title,$keyw,$desc,$text);
          case 'DeletePage': $queryPage->DeletePage($id);   
         }
@@ -74,7 +74,7 @@ $queryPage = new PageAction;
         
         require_once('menuQuery.php');
             $addMenu = new MenuAction;
-            $addMenu->AddMenu($title, 1, 'page', $queryPage->NewPage($title,$keyw,$desc,$text));
+            $addMenu->AddMenu($title, 1, 'page', $queryPage->AddPage($title,$keyw,$desc,$text));
         header('Location: pageAdd.php');
    
     }

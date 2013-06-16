@@ -5,13 +5,13 @@
 
 </head>
 <body>
-<form action="pageQuery.php" method="POST">
-        <input type="hidden" name="action" value="AddPage"></input>
-        Добавить в меню <input type="checkbox" name="AddToMenu"></input><br />
+<form action="newsQuery.php" method="POST">
+        <input type="hidden" name="action" value="AddNews"></input>
         Заголовок: <input type="text" name="title" height="45"></input><br />
         Ключевые слова: <input type="text" name="keyw" height="45" maxlength="255"></input><br />
         Описание: <input type="text" name="desc" height="45" maxlength="255"></input><br />
-        <textarea cols="50" name="text"></textarea>
+        <textarea cols="50" name="text"></textarea><br />
+        <input name="date" type="date" />
         <input type="submit">
 </form>
 </body>
